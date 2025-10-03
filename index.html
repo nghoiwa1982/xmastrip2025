@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025聖誕韓國之旅</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK TC", sans-serif;
+            background: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: #000000;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .day-navigation {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: #ffffff;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: #000000;
+            color: #ffffff;
+            border-color: #000000;
+            transform: translateY(-2px);
+        }
+        
+        .itinerary {
+            padding: 40px 0 80px;
+        }
+        
+        .day-card {
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            scroll-margin-top: 120px;
+        }
+        
+        .day-card:hover {
+            border-color: #000000;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .day-header {
+            background: var(--day-color, #000000);
+            color: #ffffff;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+        
+        .day-number {
+            font-size: 3rem;
+            font-weight: 700;
+            opacity: 0.3;
+            line-height: 1;
+        }
+        
+        .day-info h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .day-date {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+        .activities-container {
+            padding: 0;
+        }
+        
+        .activity {
+            display: flex;
+            padding: 30px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        
+        .activity:hover {
+            background-color: #fafafa;
+        }
+        
+        .activity:last-child {
+            border-bottom: none;
+        }
+        
+        .enhanced-activity {
+            flex-direction: column;
+            padding: 40px;
+            background: #fafafa;
+            gap: 0;
+        }
+        
+        .enhanced-activity:hover {
+            background: #f5f5f5;
+        }
+        
+        .activity-time {
+            flex: 0 0 120px;
+            font-weight: 600;
+            color: #000000;
+            font-size: 0.9rem;
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .enhanced-activity .activity-time {
+            flex: none;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+        
+        .activity-desc {
+            flex: 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        
+        .activity-with-maps {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: pre-wrap;
+        }
+        
+        .maps-button {
+            background: #4285f4;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .maps-button:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+        }
+        
+        .maps-button-small {
+            background: #4285f4;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .maps-button-small:hover {
+            background: #3367d6;
+            transform: scale(1.1);
+        }
+        
+        .attraction-info {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .attraction-image-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        
+        .attraction-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .attraction-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .attraction-tag {
+            background: #ffffff;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .attraction-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .attraction-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .attraction-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin: 0;
+        }
+        
+        .attraction-description {
+            color: #666666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        .original-activity {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            border-left: 4px solid #000000;
+        }
+        
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            header {
+                padding: 40px 0;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .day-navigation {
+                padding: 15px 0;
+            }
+            
+            .nav-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .nav-buttons {
+                gap: 8px;
+            }
+            
+            .nav-button {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .itinerary {
+                padding: 20px 0 40px;
+            }
+            
+            .day-card {
+                margin-bottom: 30px;
+                border-radius: 15px;
+                scroll-margin-top: 100px;
+            }
+            
+            .day-header {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .day-number {
+                font-size: 2rem;
+            }
+            
+            .day-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .activity {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+            
+            .enhanced-activity {
+                padding: 25px;
+            }
+            
+            .activity-time {
+                flex: none;
+                align-self: flex-start;
+            }
+            
+            .attraction-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .attraction-image-container {
+                aspect-ratio: 16/9;
+            }
+            
+            .attraction-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .activity-with-maps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .day-header {
+                padding: 15px;
+            }
+            
+            .activity {
+                padding: 15px;
+            }
+            
+            .enhanced-activity {
+                padding: 20px;
+            }
+            
+            .attraction-info {
+                gap: 15px;
+            }
+        }
+        
+        /* Scroll animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .day-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #000000;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>2025聖誕韓國之旅</h1>
+            <p>2024年12月25日 - 2025年1月1日</p>
+        </div>
+    </header>
+    
+    <div class="day-navigation">
+    <div class="nav-title">快速導航</div>
+    <div class="nav-buttons">
+        <a href="#day-1" class="nav-button">Day 1</a>
+        <a href="#day-2" class="nav-button">Day 2</a>
+        <a href="#day-3" class="nav-button">Day 3</a>
+        <a href="#day-4" class="nav-button">Day 4</a>
+        <a href="#day-5" class="nav-button">Day 5</a>
+        <a href="#day-6" class="nav-button">Day 6</a>
+        <a href="#day-7" class="nav-button">Day 7</a>
+        <a href="#day-8" class="nav-button">Day 8</a>
+    </div>
+</div>
+
+    
+    <main class="itinerary">
+        <div class="container">
+<div id="day-1" class="day-card" style="--day-color: #000000">
+    <div class="day-header">
+        <div class="day-number">1</div>
+        <div class="day-info">
+            <h3>Day 1</h3>
+            <span class="day-date"> (四) 25 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity">
+            <div class="activity-time">8:15 &gt; 12:45</div>
+            <div class="activity-desc"><div class="activity-with-maps">香港 > 首爾仁川機場 <a href="https://www.google.com/maps/search/location%20%E4%BB%81%E5%B7%9D%E5%BB%A3%E5%9F%9F%E5%B8%82%E4%B8%AD%E5%8D%80%E5%85%AC%E6%B8%AF%E6%B4%9E" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">14:00</div>
+            <div class="activity-desc"><div class="activity-with-maps">租車 仁川機場 <a href="https://www.google.com/maps/search/location%20%E4%BB%81%E5%B7%9D%E5%BB%A3%E5%9F%9F%E5%B8%82%E4%B8%AD%E5%8D%80%E5%85%AC%E6%B8%AF%E6%B4%9E" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">14:30 - 16:00</div>
+            <div class="activity-desc"><div class="activity-with-maps">現代Premium Outlet 松島店(Hyundai Premium Outlet Songdo) (현대프리미엄아울렛 송도점) 
+距離仁川機場約25分鐘車程
+地址：인천 연수구 송도국제대로 123
+營業時間：10:30-21:00 <a href="https://www.google.com/maps/search/location%20%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B5%AD%EC%A0%9C%EB%8C%80%EB%A1%9C%20123" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">17:00</div>
+            <div class="activity-desc">住宿 Check in</div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">19:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/bukchon.jpeg" alt="北村韓屋村" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">北村韓屋村</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">北村韓屋村</h4>
+                    <a href="https://www.google.com/maps/search/%E5%8C%97%E6%9D%91%E9%9F%93%E5%B1%8B%E6%9D%91%20%EC%84%9C%EC%9A%B8%20%EC%A2%85%EB%A1%9C%EA%B5%AC%20%EB%B6%81%EC%B4%8C%EB%A1%9C2%EA%B8%B8%205" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">北村韓屋村位於景福宮、昌德宮和宗廟之間，是在首爾有著600年歷史的韓國傳統居住區。自古以來由苑西洞、齋洞、桂洞及仁寺洞構成的此地，位於清溪川和鍾路的北方，因此被稱為『北村』。在當時是王室的高官們或貴族人士居住的高級住宅區，因而非常有名。</p>
+                <div class="original-activity">晚餐
+推薦 ——  
+北村 / PLOP安國（플롭 안국） 藏身於安國站附近的北村小巷
+地址：서울 종로구 북촌로2길 5
+時間：11:00至21:30
+交通：首爾地鐵3號線安國站2號出口
+
+北村 / 碧梧桐家（벽오동가）
+地址：서울 종로구 율곡로3길 74-10
+時間：11:30至17:00；週二公休
+交通：首爾地鐵3號線安國站1號出口</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">住宿：首爾</div>
+            <div class="activity-desc">韓屋飯店  1/2晚</div>
+        </div>
+    </div>
+</div>
+<div id="day-2" class="day-card" style="--day-color: #333333">
+    <div class="day-header">
+        <div class="day-number">2</div>
+        <div class="day-info">
+            <h3>Day 2</h3>
+            <span class="day-date"> (五) 26 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity enhanced-activity">
+            <div class="activity-time">8:30</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/bukchon.jpeg" alt="北村韓屋村" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">北村韓屋村</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">北村韓屋村</h4>
+                    <a href="https://www.google.com/maps/search/%E5%8C%97%E6%9D%91%E9%9F%93%E5%B1%8B%E6%9D%91%20%EC%84%9C%EC%9A%B8%20%EC%A2%85%EB%A1%9C%EA%B5%AC%20%EA%B3%84%EB%8F%99%EA%B8%B8%205%20%EC%B9%B4%ED%8E%98%20%EC%96%B4%EB%8B%88%EC%96%B8" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">北村韓屋村位於景福宮、昌德宮和宗廟之間，是在首爾有著600年歷史的韓國傳統居住區。自古以來由苑西洞、齋洞、桂洞及仁寺洞構成的此地，位於清溪川和鍾路的北方，因此被稱為『北村』。在當時是王室的高官們或貴族人士居住的高級住宅區，因而非常有名。</p>
+                <div class="original-activity">早餐
+推薦 ——  三清洞咖啡廳
+Cafe Onion 安國店/어니언 안국
+地址：서울 종로구 계동길 5 카페 어니언
+營業時間：平日 07:00 ~ 22:00/周末 09:00 ~ 22:00
+電話：0507-1424-2123
+
+London Bagel Museum Anguk / 런던 베이글 뮤지엄 안국점  
+ 就在北村韓屋村附近
+地址：서울 종로구 북촌로4길 20
+營業時間：每日08:00~18:00</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">10:00 - 12:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/gyeongbokgung.jpeg" alt="景福宮" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">景福宮</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">景福宮</h4>
+                    <a href="https://www.google.com/maps/search/%E6%99%AF%E7%A6%8F%E5%AE%AE%20%E9%A6%96%E7%88%BE%E7%89%B9%E5%88%A5%E5%B8%82%E9%90%98%E8%B7%AF%E5%8D%80%E7%A4%BE%E7%A8%B7%E8%B7%AF161" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">景福宮是朝鮮王朝（1392年-1910年）時期韓國首爾的五大宮之一，也是朝鮮王朝的正宮，具有600多年歷史，是首爾規模最大、最古老的宮殿之一。景福宮得名於《詩經·大雅》中『君子萬年，介爾景福』的詩句，因位於首爾北部，也叫『北闕』。</p>
+                <div class="original-activity">景福宮</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">13:00</div>
+            <div class="activity-desc"><div class="activity-with-maps">午餐
+土俗村蔘雞湯 (토속촌삼계탕) Tosokchon Samgyetang
+地址：首爾特別市鐘路區紫霞門路5街5 <a href="https://www.google.com/maps/search/location%20%E9%A6%96%E7%88%BE%E7%89%B9%E5%88%A5%E5%B8%82%E9%90%98%E8%B7%AF%E5%8D%80%E7%B4%AB%E9%9C%9E%E9%96%80%E8%B7%AF5%E8%A1%975" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">14:30-17:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/bukchon.jpeg" alt="北村韓屋村" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">北村韓屋村</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">北村韓屋村</h4>
+                    <a href="https://www.google.com/maps/search/%E5%8C%97%E6%9D%91%E9%9F%93%E5%B1%8B%E6%9D%91%20%E9%A6%96%E7%88%BE%E5%B8%82%E4%B8%AD%E5%8D%80%E9%80%80%E6%BA%AA%E8%B7%AF%20134-1" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">北村韓屋村位於景福宮、昌德宮和宗廟之間，是在首爾有著600年歷史的韓國傳統居住區。自古以來由苑西洞、齋洞、桂洞及仁寺洞構成的此地，位於清溪川和鍾路的北方，因此被稱為『北村』。在當時是王室的高官們或貴族人士居住的高級住宅區，因而非常有名。</p>
+                <div class="original-activity">北村韓屋村、三清洞、仁寺洞
+地址：首爾市中區退溪路 134-1
+서울특별시 중구 퇴계로 134-1
+營業時間：10:00～22:00</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">17:30</div>
+            <div class="activity-desc"><div class="activity-with-maps">晚餐
+推薦----
+可樂海鮮市場 (가락시장)
+地址：Yangjae-daero, Songpa-gu, Seoul <a href="https://www.google.com/maps/search/location%20Yangjae-daero%2C%20Songpa-gu%2C%20Seoul" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">住宿：首爾</div>
+            <div class="activity-desc">韓屋飯店  2/2晚</div>
+        </div>
+    </div>
+</div>
+<div id="day-3" class="day-card" style="--day-color: #666666">
+    <div class="day-header">
+        <div class="day-number">3</div>
+        <div class="day-info">
+            <h3>Day 3</h3>
+            <span class="day-date"> (六) 27 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity enhanced-activity">
+            <div class="activity-time">09:00 - 11:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/gwangjang_market.jpg" alt="廣藏市場" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">廣藏市場</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">廣藏市場</h4>
+                    <a href="https://www.google.com/maps/search/%E5%BB%A3%E8%97%8F%E5%B8%82%E5%A0%B4%20%EC%84%9C%EC%9A%B8%20%EC%A2%85%EB%A1%9C%EA%B5%AC%20%EC%A2%85%EB%A1%9C4%EA%B0%80%20%EC%B0%BD%EA%B2%BD%EA%B6%81%EB%A1%9C%2088%20%EF%BC%8888%20Changgyeonggung-ro%2C%20Jongno-gu%2C%20Seoul%2C%20South%20Korea%EF%BC%89" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">廣藏市場是韓國最早的私營商街，擁有超過百年的歷史。這裡以豐富多樣的傳統小吃而聞名，如綠豆煎餅、麻藥紫菜包飯、生拌牛肉等，被譽為『美食天國』。除了美食，市場內還有綢緞、布料、韓服等商品，是體驗韓國傳統市場魅力的好去處。</p>
+                <div class="original-activity">早餐
+廣藏市場
+地址：서울 종로구 종로4가 창경궁로 88 （88 Changgyeonggung-ro, Jongno-gu, Seoul, South Korea）
+電話：02-2267-0291
+營業：一般 08:30~18:00；小吃 08:30~23:00；服飾 21:00-翌日 10:00
+</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">12:00 &gt; 14:00</div>
+            <div class="activity-desc"><div class="activity-with-maps">洪川大明 Vivaldi Park Ski World (비발디 파크 스키월드) 
+地點：江原道洪川郡西面寒峙谷街262
+262 Hanchigol-gil, Hongcheon-gun, Gangwon-do
+강원특별자치도 홍천군 서면 한치골길 262
+電話：+82-1588-4888 <a href="https://www.google.com/maps/search/location%20%E6%B1%9F%E5%8E%9F%E9%81%93%E6%B4%AA%E5%B7%9D%E9%83%A1%E8%A5%BF%E9%9D%A2%E5%AF%92%E5%B3%99%E8%B0%B7%E8%A1%97262" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">15:00</div>
+            <div class="activity-desc">住宿 Check in</div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">15:30 - 17:30</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">滑雪  或 冰雪王國</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">18:30</div>
+            <div class="activity-desc">晚餐</div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">住宿</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    <a href="https://www.google.com/maps/search/%E7%B6%AD%E7%93%A6%E7%88%BE%E7%AC%AC%E5%85%AC%E5%9C%92%E6%BB%91%E9%9B%AA%E4%B8%96%E7%95%8C%20%E6%B1%9F%E5%8E%9F%E9%81%93%E6%B4%AA%E5%B7%9D%E9%83%A1%E8%A5%BF%E9%9D%A2%E5%AF%92%E5%B3%99%E8%B0%B7%E8%A1%97262" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">維瓦爾第公園酒店  1/3晚</div>
+            </div>
+        </div></div>
+        </div>
+    </div>
+</div>
+<div id="day-4" class="day-card" style="--day-color: #999999">
+    <div class="day-header">
+        <div class="day-number">4</div>
+        <div class="day-info">
+            <h3>Day 4</h3>
+            <span class="day-date"> (日) 28 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity enhanced-activity">
+            <div class="activity-time">9:00 - 12:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">滑雪  或 冰雪王國</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">15:00 - 18:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">滑雪  或 冰雪王國</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">住宿</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    <a href="https://www.google.com/maps/search/%E7%B6%AD%E7%93%A6%E7%88%BE%E7%AC%AC%E5%85%AC%E5%9C%92%E6%BB%91%E9%9B%AA%E4%B8%96%E7%95%8C%20%E6%B1%9F%E5%8E%9F%E9%81%93%E6%B4%AA%E5%B7%9D%E9%83%A1%E8%A5%BF%E9%9D%A2%E5%AF%92%E5%B3%99%E8%B0%B7%E8%A1%97262" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">維瓦爾第公園酒店  2/3晚</div>
+            </div>
+        </div></div>
+        </div>
+    </div>
+</div>
+<div id="day-5" class="day-card" style="--day-color: #000000">
+    <div class="day-header">
+        <div class="day-number">5</div>
+        <div class="day-info">
+            <h3>Day 5</h3>
+            <span class="day-date"> (一) 29Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity">
+            <div class="activity-time">15:00 - 18:00</div>
+            <div class="activity-desc">水上樂園（Ocena World）溫泉</div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">住宿</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/vivaldi_ski.jpeg" alt="維瓦爾第公園滑雪世界" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">維瓦爾第公園滑雪世界</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">維瓦爾第公園滑雪世界</h4>
+                    <a href="https://www.google.com/maps/search/%E7%B6%AD%E7%93%A6%E7%88%BE%E7%AC%AC%E5%85%AC%E5%9C%92%E6%BB%91%E9%9B%AA%E4%B8%96%E7%95%8C%20%E6%B1%9F%E5%8E%9F%E9%81%93%E6%B4%AA%E5%B7%9D%E9%83%A1%E8%A5%BF%E9%9D%A2%E5%AF%92%E5%B3%99%E8%B0%B7%E8%A1%97262" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">洪川大明維瓦爾第公園滑雪世界是韓國最受歡迎的滑雪勝地之一，擁有適合各種水平滑雪者的多樣化滑雪道。這裡不僅有優良的雪質和完善的設施，還有冰雪王國、水上樂園等豐富的娛樂項目，是冬季家庭出遊和情侶約會的理想選擇。</p>
+                <div class="original-activity">維瓦爾第公園酒店  3/3晚</div>
+            </div>
+        </div></div>
+        </div>
+    </div>
+</div>
+<div id="day-6" class="day-card" style="--day-color: #333333">
+    <div class="day-header">
+        <div class="day-number">6</div>
+        <div class="day-info">
+            <h3>Day 6</h3>
+            <span class="day-date"> (二) 30 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity">
+            <div class="activity-time">9:00 &gt; 11:00</div>
+            <div class="activity-desc">回首爾</div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">12:30</div>
+            <div class="activity-desc"><div class="activity-with-maps">首爾仁川機場 <a href="https://www.google.com/maps/search/location%20%E4%BB%81%E5%B7%9D%E5%BB%A3%E5%9F%9F%E5%B8%82%E4%B8%AD%E5%8D%80%E5%85%AC%E6%B8%AF%E6%B4%9E" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">15:00 - 18:00</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/myeongdong.jpg" alt="明洞" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">明洞</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">明洞</h4>
+                    <a href="https://www.google.com/maps/search/%E6%98%8E%E6%B4%9E%20%E9%A6%96%E7%88%BE%E7%89%B9%E5%88%A5%E5%B8%82%E4%B8%AD%E5%8D%80%E6%98%8E%E6%B4%9E%E8%A1%97" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">明洞是首爾最繁華的購物區之一，集購物、餐飲、娛樂於一體。這裡不僅有樂天、新世界等大型百貨公司，還有各種品牌的旗艦店、化妝品店和時尚小店。到了夜晚，街邊小吃攤更是琳瑯滿目，是感受首爾活力與潮流的最佳地點。</p>
+                <div class="original-activity">弘大、明洞、城西、梨泰院</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">住宿：首爾</div>
+            <div class="activity-desc">[全新] * DMC *弘大*機場體驗*電梯    1/2晚</div>
+        </div>
+    </div>
+</div>
+<div id="day-7" class="day-card" style="--day-color: #666666">
+    <div class="day-header">
+        <div class="day-number">7</div>
+        <div class="day-info">
+            <h3>Day 7</h3>
+            <span class="day-date"> (三) 31 Dec</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity enhanced-activity">
+            <div class="activity-time">13:00 - 16:30</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/namsan_tower.jpg" alt="南山塔" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">南山塔</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">南山塔</h4>
+                    <a href="https://www.google.com/maps/search/%E5%8D%97%E5%B1%B1%E5%A1%94%20%E9%A6%96%E7%88%BE%E7%89%B9%E5%88%AB%E5%B8%82%E9%BE%8D%E5%B1%B1%E5%8D%80%E5%8D%97%E5%B1%B1%E5%85%AC%E5%9C%92%E8%A1%97126" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">N首爾塔，也稱為南山塔，是首爾的標誌性建築。塔高236.7米，位於海拔243米的南山之巔，是欣賞首爾夜景的著名景點，也是許多韓劇的拍攝地。遊客可以乘坐南山纜車登上觀景台，360度俯瞰首爾全景。</p>
+                <div class="original-activity">南山纜車、N Seoul Tower 首爾塔
+地址：首爾特别市龍山區南山公園街126 
+營業時間：10:00–22:30 (周一至周日)</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity enhanced-activity">
+            <div class="activity-time">17:00 - 18:40</div>
+            <div class="activity-desc"><div class="attraction-info">
+            <div class="attraction-image-container">
+                <img src="images/myeongdong.jpg" alt="明洞" class="attraction-image">
+                <div class="image-overlay">
+                    <span class="attraction-tag">明洞</span>
+                </div>
+            </div>
+            <div class="attraction-content">
+                <div class="attraction-header">
+                    <h4 class="attraction-title">明洞</h4>
+                    <a href="https://www.google.com/maps/search/%E6%98%8E%E6%B4%9E%20%E9%A6%96%E7%88%BE%E7%89%B9%E5%88%A5%E5%B8%82%E4%B8%AD%E5%8D%80%E6%98%8E%E6%B4%9E%E8%A1%9726%2CUNESCO%E6%9C%83%E9%A4%A83%E6%A8%93" target="_blank" class="maps-button" title="在Google地圖中查看">📍 導航</a>
+                </div>
+                <p class="attraction-description">明洞是首爾最繁華的購物區之一，集購物、餐飲、娛樂於一體。這裡不僅有樂天、新世界等大型百貨公司，還有各種品牌的旗艦店、化妝品店和時尚小店。到了夜晚，街邊小吃攤更是琳瑯滿目，是感受首爾活力與潮流的最佳地點。</p>
+                <div class="original-activity">明洞NANTA亂打秀門
+交通：地鐵明洞站1、3號出口"明洞NANTA亂打秀門
+地址：首爾特別市中區明洞街26,UNESCO會館3樓
+明洞：週一到週五 17:00, 20:00
+表演時長：100分鐘(1小時40分鐘)</div>
+            </div>
+        </div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">住宿：首爾</div>
+            <div class="activity-desc">[全新] * DMC *弘大*機場體驗*電梯    2/2晚</div>
+        </div>
+    </div>
+</div>
+<div id="day-8" class="day-card" style="--day-color: #999999">
+    <div class="day-header">
+        <div class="day-number">8</div>
+        <div class="day-info">
+            <h3>Day 8</h3>
+            <span class="day-date"> (四) 1 Jan</span>
+        </div>
+    </div>
+    <div class="activities-container">
+        <div class="activity">
+            <div class="activity-time">10:30</div>
+            <div class="activity-desc"><div class="activity-with-maps">首爾仁川機場 <a href="https://www.google.com/maps/search/location%20%E4%BB%81%E5%B7%9D%E5%BB%A3%E5%9F%9F%E5%B8%82%E4%B8%AD%E5%8D%80%E5%85%AC%E6%B8%AF%E6%B4%9E" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+        <div class="activity">
+            <div class="activity-time">13:45 &gt; 17:00</div>
+            <div class="activity-desc"><div class="activity-with-maps">首爾仁川機場 > 香港  <a href="https://www.google.com/maps/search/location%20%E4%BB%81%E5%B7%9D%E5%BB%A3%E5%9F%9F%E5%B8%82%E4%B8%AD%E5%8D%80%E5%85%AC%E6%B8%AF%E6%B4%9E" target="_blank" class="maps-button-small" title="在Google地圖中查看">📍</a></div></div>
+        </div>
+    </div>
+</div>
+        </div>
+    </main>
+</body>
+</html>
